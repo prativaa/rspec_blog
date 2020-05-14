@@ -12,6 +12,12 @@ class PostsController < ApplicationController
   end
 
   def create
+    @post = Post.create(post_params)
+    if @post.valid?
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def edit
@@ -21,5 +27,11 @@ class PostsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :author, :content)
   end
 end
