@@ -22,4 +22,26 @@ RSpec.describe PostsController, type: :controller do
       expect(response).to render_template :new
     end
   end
+
+  describe "POST #create" do
+    context "with valid attributes" do
+      it "creates a new post" do
+
+      end
+
+      it "redirects to root_path" do
+
+      end
+    end
+
+    context "with invalid attributes" do
+      it "doesn't create a new post" do
+
+      end
+
+      it "renders the new template" do
+
+      end
+    end
+  end
 end
