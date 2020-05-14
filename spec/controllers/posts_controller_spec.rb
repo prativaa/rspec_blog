@@ -7,4 +7,12 @@ RSpec.describe PostsController, type: :controller do
       expect(response).to render_template(:index)
     end
   end
+
+  describe "GET #show" do
+    it "renders the show template" do
+      
+      # get :show, id: post.id
+      # expect(response).to render_template(:show)
+    end
+  end
 end
