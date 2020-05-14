@@ -32,17 +32,21 @@ RSpec.describe PostsController, type: :controller do
       end
 
       it "redirects to root_path" do
-
+        post :create, params: { post: FactoryBot.attributes_for(:post) }
+        expect(response).to redirect_to root_path
       end
     end
 
     context "with invalid attributes" do
       it "doesn't create a new post" do
-
+        expect {
+          post :create, params: { post: FactoryBot.attributes_for(:post, content: "Short content", title: "", author: "") }
+      }.to change(Post, :count).by(0)
       end
 
       it "renders the new template" do
-
+        post :create, params: { post: FactoryBot.attributes_for(:post, content: "Short content", title: "", author: "") }
+        expect(response).to render_template :new
       end
     end
   end
