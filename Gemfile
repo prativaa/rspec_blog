@@ -17,6 +17,8 @@ gem 'simple_form', '~> 5.0', '>= 5.0.2'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 4.0'
+  gem 'pry-rails'
+  gem 'rails-controller-testing', '~> 1.0', '>= 1.0.4'
 end
 
 group :development do
