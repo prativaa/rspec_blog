@@ -50,4 +50,12 @@ RSpec.describe PostsController, type: :controller do
       end
     end
   end
+
+  describe "GET #edit" do
+    it "renders the edit templated" do
+      post = FactoryBot.create(:post)
+      get :edit, params: { id: post.id }
+      expect(response).to render_template :edit
+    end
+  end
 end
