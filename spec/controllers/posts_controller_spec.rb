@@ -106,4 +106,19 @@ RSpec.describe PostsController, type: :controller do
       end
     end
   end
+
+  describe "DELETE #destroy" do
+    it "deletes the post" do
+      post = FactoryBot.create(:post)
+      expect {
+        delete :destroy, params: { id: post.id }
+      }.to change(Post, :count).by(-1)
+    end
+
+    it "redirects to root_path" do
+      post = FactoryBot.create(:post)
+      delete :destroy, params: { id: post.id }
+      expect(response).to redirect_to root_path
+    end
+  end
 end
