@@ -20,6 +20,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rails-controller-testing', '~> 1.0', '>= 1.0.4'
   gem 'factory_bot_rails', '~> 5.2'
+  gem 'shoulda-matchers', '~> 4.3'
 end
 
 group :development do
