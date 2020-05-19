@@ -40,12 +40,12 @@ RSpec.describe PostsController, type: :controller do
     context "with invalid attributes" do
       it "doesn't create a new post" do
         expect {
-          post :create, params: { post: FactoryBot.attributes_for(:post, content: "Short content", title: "", author: "") }
+          post :create, params: { post: FactoryBot.attributes_for(:invalid_post) }
       }.to change(Post, :count).by(0)
       end
 
       it "renders the new template" do
-        post :create, params: { post: FactoryBot.attributes_for(:post, content: "Short content", title: "", author: "") }
+        post :create, params: { post: FactoryBot.attributes_for(:invalid_post) }
         expect(response).to render_template :new
       end
     end
@@ -63,7 +63,7 @@ RSpec.describe PostsController, type: :controller do
     context "with valid attributes" do
       it "updates the post" do
         post = FactoryBot.create(:post)
-        patch :update, params: { id: post.id, 
+        put :update, params: { id: post.id, 
                                   post: FactoryBot.attributes_for(:post, 
                                   title: "Updated Title",
                                   author: "Larry") }
@@ -74,7 +74,7 @@ RSpec.describe PostsController, type: :controller do
 
       it "redirects to root_path" do
         post = FactoryBot.create(:post)
-        patch :update, params: { id: post.id, 
+        put :update, params: { id: post.id, 
                                   post: FactoryBot.attributes_for(:post, 
                                   title: "Updated Title",
                                   author: "Larry") }
@@ -85,7 +85,7 @@ RSpec.describe PostsController, type: :controller do
     context "with invalid attributes" do
       it "doesn't update the post" do
         post = FactoryBot.create(:post)
-        patch :update, params: { id: post.id, 
+        put :update, params: { id: post.id, 
                                   post: FactoryBot.attributes_for(:post, 
                                   title: "Updated Title",
                                   author: "Larry",
@@ -97,7 +97,7 @@ RSpec.describe PostsController, type: :controller do
 
       it "renders the edit template" do
         post = FactoryBot.create(:post)
-        patch :update, params: { id: post.id, 
+        put :update, params: { id: post.id, 
                                   post: FactoryBot.attributes_for(:post, 
                                   title: "Updated Title",
                                   author: "Larry",
